@@ -1,13 +1,3 @@
-// Previamente hemos hecho en la terminal:
-// npm init (para iniciar un proyecto de node)
-// npm install (para descargar la carpeta node modules)
-// npm install express (para descargarnos el módulo express y que se nos carguen las dependencias automáticamente en el package.json)
-// npm install cors (para descargarnos el módulo cors y que se nos carguen las dependencias automáticamente en el package.json)
-// npm installa path (para descargarnos el módulo path y que se nos carguen las dependencias automáticamente en el package.json)
-// npm install mysql2 (para descargar el módulo para conectar con MySQL y que se nos carguen las dependencias automáticamente en el package.json)
-// en el archivo package.json hemos hecho cambios en ruta relativa (para que sea src/index.js) y unos scripts nuevos para ejecutar
-// el archivo ("start": "node src/index.js", "dev": "nodemon src/index.js")
-
 //1. Importamos los modulos de NPM que necesitamos:
 const express = require('express');
 const cors = require('cors');
