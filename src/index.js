@@ -40,24 +40,31 @@ server.get('/api/books', async (req, res) => {
   });
 });
 
-//Crear/añadir un nuevo elemento.
+//Crear/añadir un nuevo elemento:
 
 server.post('/api/newbook', async (req, res) => {
   const data = req.body;
   const { title, author, year, pages } = data;
-
   const connection = await getConnection();
-  const sql = 'INSERT INTO books(title, author, year, pages) VALUES (?,?,?,?)';
-  const [resultInsert] = await connection.query(sql, [title, author, year, pages]);
-  connection.end();
 
-  res.status(201).json({
-    success: true,
-    message: 'El libro ha sido añadido correctamente',
-  });
+  if (!data.title || !data.author) {
+    res.status(404).json({
+      success: false,
+      error: 'Faltan datos del libro',
+    });
+  } else {
+    const sql = 'INSERT INTO books(title, author, year, pages) VALUES (?,?,?,?)';
+    const [resultInsert] = await connection.query(sql, [title, author, year, pages]);
+    connection.end();
+
+    res.status(201).json({
+      success: true,
+      message: 'El libro ha sido añadido correctamente',
+    });
+  }
 });
 
-//Actualizar una entrada existente.
+//Actualizar una entrada existente:
 
 server.put('/api/book/:id', async (req, res) => {
   const id = req.params.id;
@@ -67,6 +74,7 @@ server.put('/api/book/:id', async (req, res) => {
   const connection = await getConnection();
   const sql = 'UPDATE books SET year=?,pages=? WHERE id=?';
   const [result] = await connection.query(sql, [year, pages, id]);
+  connection.end();
 
   res.status(201).json({
     success: true,
@@ -74,7 +82,7 @@ server.put('/api/book/:id', async (req, res) => {
   });
 });
 
-//Eliminar una entrada existente.
+//Eliminar una entrada existente:
 
 server.delete('/api/book/', async (req, res) => {
   const id = req.query.id;
@@ -83,9 +91,17 @@ server.delete('/api/book/', async (req, res) => {
 
   const sql = 'DELETE FROM books WHERE id=?';
   const [result] = await connection.query(sql, [id]);
+  connection.end();
 
-  res.status(200).json({
-    success: true,
-    message: 'El libro ha sido eliminado',
-  });
+  if (result.affectedRows === 0) {
+    res.status(404).json({
+      success: false,
+      error: 'No existe ningún libro con ese id',
+    });
+  } else {
+    res.status(200).json({
+      success: true,
+      message: 'El libro ha sido eliminado',
+    });
+  }
 });
