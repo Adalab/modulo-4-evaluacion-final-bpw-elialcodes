@@ -7,8 +7,13 @@ en la que se encuentran registrados los libros.
 Se han diseñado y creado endpoints para poder realizar las siguientes acciones CRUD (create, read, update, delete):
 
 1. GET "/api/books" , este endpoint devuelve una lista de todos los libros disponibles en la biblioteca.
+
+2. GET "/api/books/:id" , este endpoint devuelve un libro de la biblioteca según su id. Se debe proporcionar el ID del libro 
+  en la url. Ejemplo de url:
+
+    "/api/book/2"
   
-2. POST "/api/newbook" , permite agregar un nuevo libro a la colección. Se debe proporcionar la información del libro en el
+3. POST "/api/newbook" , permite agregar un nuevo libro a la colección. Se debe proporcionar la información del libro en el
   cuerpo de la solicitud en formato JSON. Ejemplo:
 
     {
@@ -18,8 +23,8 @@ Se han diseñado y creado endpoints para poder realizar las siguientes acciones 
       "anio_publicacion": 1954
     }
 
-3. PUT "/api/book/:id" , permite actualizar la información de un libro existente identificado por su ID. Se debe proporcionar el ID del libro 
-  a actualizar en la URL y la nueva información del libro en el cuerpo de la solicitud en formato JSON. Ejemplo de url y de JSON:
+4. PUT "/api/book/:id" , permite actualizar la información de un libro existente identificado por su ID. Se debe proporcionar el ID del libro 
+  a actualizar en la url y la nueva información del libro en el cuerpo de la solicitud en formato JSON. Ejemplo de url y de JSON:
 
     "/api/book/2"
 
