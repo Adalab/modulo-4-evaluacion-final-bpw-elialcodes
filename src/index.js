@@ -40,6 +40,30 @@ server.get('/api/books', async (req, res) => {
   });
 });
 
+//Leer/listar una entrada determinada:
+
+server.get('/api/books/:id', async (req, res) => {
+  const id = req.params.id;
+
+  const connection = await getConnection();
+  const sql = 'SELECT * FROM books WHERE id=?';
+  const [result] = await connection.query(sql, [id]);
+  console.log(result);
+  connection.end();
+
+  if (result.length === 0) {
+    res.status(404).json({
+      success: false,
+      error: 'No existe ningún libro con ese id',
+    });
+  } else {
+    res.status(201).json({
+      success: true,
+      result: result,
+    });
+  }
+});
+
 //Crear/añadir un nuevo elemento:
 
 server.post('/api/newbook', async (req, res) => {
