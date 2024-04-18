@@ -14,8 +14,9 @@ async function getConnection() {
     host: 'localhost',
     database: 'bookshop',
     user: 'root',
-    //password: process.env.DB_PASSWORD, //si existe, si es BD de la web freeDataBase existe contraseña seguro.
+    password: process.env.DB_PASSWORD,
   });
+
   connection.connect();
   return connection;
 }
@@ -23,4 +24,18 @@ async function getConnection() {
 const port = process.env.PORT;
 server.listen(port, () => {
   console.log('Server is listening in http://localhost' + port);
+});
+
+//Leer/listar todas las entradas existentes:
+
+server.get('/api/books', async (req, res) => {
+  const connection = await getConnection();
+  const sql = 'SELECT * FROM books';
+  const [result] = await connection.query(sql);
+  connection.end();
+
+  res.json({
+    status: 201,
+    result: result,
+  });
 });
