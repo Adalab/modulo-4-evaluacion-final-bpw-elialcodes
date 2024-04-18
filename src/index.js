@@ -73,3 +73,19 @@ server.put('/api/book/:id', async (req, res) => {
     message: 'El libro ha sido actualizado correctamente',
   });
 });
+
+//Eliminar una entrada existente.
+
+server.delete('/api/book/', async (req, res) => {
+  const id = req.query.id;
+
+  const connection = await getConnection();
+
+  const sql = 'DELETE FROM books WHERE id=?';
+  const [result] = await connection.query(sql, [id]);
+
+  res.status(200).json({
+    success: true,
+    message: 'El libro ha sido eliminado',
+  });
+});
