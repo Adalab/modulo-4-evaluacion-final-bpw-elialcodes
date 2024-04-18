@@ -34,8 +34,29 @@ server.get('/api/books', async (req, res) => {
   const [result] = await connection.query(sql);
   connection.end();
 
-  res.json({
-    status: 201,
+  res.status(201).json({
+    status: 'success',
     result: result,
   });
 });
+
+//Crear/añadir un nuevo elemento.
+
+server.post('/api/newbook', async (req, res) => {
+  const data = req.body;
+  const { title, author, year, pages, topic, stock } = data;
+
+  const connection = await getConnection();
+  const sql = 'INSERT INTO books(title, author, year, pages, topic, stock) VALUES (?,?,?,?,?,?)';
+  const [resultInsert] = await connection.query(sql, [title, author, year, pages, topic, stock]);
+  connection.end();
+
+  res.status(201).json({
+    status: 'success',
+    message: 'El libro ha sido añadido correctamente',
+  });
+});
+
+//Actualizar una entrada existente.
+
+//Eliminar una entrada existente.
