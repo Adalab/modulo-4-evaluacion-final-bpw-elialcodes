@@ -1,4 +1,4 @@
-# GESTIONAR LOS RECURSOS DE UNA BIBLIOTECA:
+GESTIONAR LOS RECURSOS DE UNA BIBLIOTECA:
 
 Este proyecto consiste en simular a pequeña escala cómo podría se la gestión de recursos de una biblioteca.
 Para ello hemos diseñado un servidor utilizando Express.js, que estará vinculado a una base de datos MySQL
