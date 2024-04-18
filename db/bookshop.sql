@@ -7,16 +7,25 @@ CREATE TABLE books(
     title VARCHAR(60),
     author VARCHAR(60),
     year INT,
-    pages INT,
-    topic VARCHAR(40),
-    stock INT
+    pages INT
 );
 
-INSERT INTO books (title, author, year, pages, topic, stock)
-VALUES("El jardín olvidado", "Kate Morton", 2010, 544, "Drama", 5),
-("Mil soles espléndidos", "Khaled Hosseini", 2007, 384, "Drama", 6),
-("Cien años de soledad", "Gabriel García Márquez", 1967, 496, "Novela Hispanoamericana", 10),
-("La novia gitana", "Carmen Mola", 2018, 408, "Policíaca", 2)
+INSERT INTO books (title, author, year, pages)
+VALUES("El jardín olvidado", "Kate Morton", 2010, 544),
+("Mil soles espléndidos", "Khaled Hosseini", 2007, 384),
+("Cien años de soledad", "Gabriel García Márquez", 1967, 496),
+("La novia gitana", "Carmen Mola", 2018, 408)
 
-Para probar el endpoint para insertar un nuevo libro a la db:
-("Reina Roja", "Juan Gómez-Jurado", 2018, 568, "Policíaca", 11)
+-- Para probar el endpoint de insertar un nuevo libro a la db:
+-- {
+-- "title": "Reina Roja",
+-- "author":"Juan Gómez-Jurado",
+-- "year":"2018",
+-- "pages":"568",
+-- }
+
+-- Para probar el endpoint de actualizar un libro a la db:
+-- {
+-- "year":"2018",
+-- "pages":"568",
+-- }
