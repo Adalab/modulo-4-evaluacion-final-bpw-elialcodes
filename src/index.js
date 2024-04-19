@@ -98,12 +98,20 @@ server.put('/api/book/:id', async (req, res) => {
   const connection = await getConnection();
   const sql = 'UPDATE books SET year=?,pages=? WHERE id=?';
   const [result] = await connection.query(sql, [year, pages, id]);
+  console.log(result);
   connection.end();
 
-  res.status(201).json({
-    success: true,
-    message: 'El libro ha sido actualizado correctamente',
-  });
+  if (result.insertId === 0) {
+    res.status(404).json({
+      success: false,
+      error: 'No existe ningún libro con ese id',
+    });
+  } else {
+    res.status(201).json({
+      success: true,
+      result: result,
+    });
+  }
 });
 
 //Eliminar una entrada existente:
