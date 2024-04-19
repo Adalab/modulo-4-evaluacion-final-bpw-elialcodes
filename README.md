@@ -47,8 +47,8 @@ Se han diseñado y creado endpoints para poder realizar las siguientes acciones 
    - si no encuentra ningún libro con ese id, devuelve un mesaje de error:  
       status: 404; error:'No existe ningún libro con ese id'.
 
-- si los datos ha actualizar ya existen en el libro, devuelve un mensaje:
-  status: 404; message:'Esos datos ya existen en el libro'.
+   - si los datos ha actualizar ya existen en el libro, devuelve un mensaje:
+     status: 404; message:'Esos datos ya existen en el libro'.
 
 5. DELETE "/api/books/"
 
