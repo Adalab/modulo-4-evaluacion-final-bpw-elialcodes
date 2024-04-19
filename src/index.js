@@ -48,7 +48,6 @@ server.get('/api/books/:id', async (req, res) => {
   const connection = await getConnection();
   const sql = 'SELECT * FROM books WHERE id=?';
   const [result] = await connection.query(sql, [id]);
-  console.log(result);
   connection.end();
 
   if (result.length === 0) {
@@ -98,7 +97,6 @@ server.put('/api/books/:id', async (req, res) => {
   const connection = await getConnection();
   const sql = 'UPDATE books SET year=?,pages=? WHERE id=?';
   const [result] = await connection.query(sql, [year, pages, id]);
-  console.log(result);
   connection.end();
 
   if (result.affectedRows === 0) {

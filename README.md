@@ -3,6 +3,17 @@ GESTIONAR LOS RECURSOS DE UNA BIBLIOTECA:
 Este proyecto consiste desarrolar una api que simula a pequeña escala cómo podría ser la gestión de recursos de una biblioteca.
 Para ello hemos diseñado unos endpoints y un servidor utilizando Express.js, el cual estará vinculado a una base de datos MySQL en la que se encuentran registrados libros y usuarios.
 
+Pasos de configuración si se desea probar esta api:
+Es necesario tener instalado previamente node.js, MySQL y la interfaz gráfica MySQL Workbench.
+Configuración de tu editor de código en la terminal:
+
+- npm init => para iniciar el proyecto, se debe seguir sus indicaciones de configuración
+- npm install => para instalar la carpeta node_modules, donde se guardarán los módulo siguientes a importar
+- npm install express => para instaler Express JS, nuestro servidor
+- npm install cors => para permitir peticiones a un recurso alojado en otro origen
+- npm start => para arrancar el servidor
+- npm install mysql2 => para poder conectar el servidor a la base de datos de MySQL
+
 Se han diseñado y creado endpoints para poder realizar las siguientes acciones CRUD (create, read, update, delete):
 
 1. GET: "/api/books",
@@ -52,9 +63,9 @@ Se han diseñado y creado endpoints para poder realizar las siguientes acciones 
 
 5. DELETE "/api/books/"
 
-- permite eliminar un libro existente de la colección mediante su ID, ejemplo de url: "/api/books/?=4"
-- si el libro no se encuentra en la base de datos se devuelve un mensaje de error:
-  success: false; error: 'No existe ningún libro con ese id',
+   - permite eliminar un libro existente de la colección mediante su ID, ejemplo de url: "/api/books/?=4"
+   - si el libro no se encuentra en la base de datos se devuelve un mensaje de error:
+     success: false; error: 'No existe ningún libro con ese id',
 
 Para comprobar el funcionamiento del servidor y los endpoints, se recomienda utilizar Postman, y así probar la API diseñada.
 
