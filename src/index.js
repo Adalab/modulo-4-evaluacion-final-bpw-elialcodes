@@ -74,7 +74,7 @@ server.post('/api/newbook', async (req, res) => {
   if (!data.title || !data.author) {
     res.status(404).json({
       success: false,
-      error: 'Faltan datos del libro',
+      error: 'Faltan datos para añadir el libro',
     });
   } else {
     const sql = 'INSERT INTO books(title, author, year, pages) VALUES (?,?,?,?)';
@@ -90,7 +90,7 @@ server.post('/api/newbook', async (req, res) => {
 
 //Actualizar una entrada existente:
 
-server.put('/api/book/:id', async (req, res) => {
+server.put('/api/books/:id', async (req, res) => {
   const id = req.params.id;
   const newData = req.body;
   const { year, pages } = newData;
@@ -101,22 +101,24 @@ server.put('/api/book/:id', async (req, res) => {
   console.log(result);
   connection.end();
 
-  if (result.insertId === 0) {
+  if (result.affectedRows === 0) {
     res.status(404).json({
       success: false,
       error: 'No existe ningún libro con ese id',
     });
+  } else if (result.changedRows === 0) {
+    res.status(404).json({ sucess: false, message: 'Esos datos ya existen en el libro' });
   } else {
     res.status(201).json({
       success: true,
-      result: result,
+      result: 'El libro se ha actualizado correctamente',
     });
   }
 });
 
 //Eliminar una entrada existente:
 
-server.delete('/api/book/', async (req, res) => {
+server.delete('/api/books/', async (req, res) => {
   const id = req.query.id;
 
   const connection = await getConnection();
