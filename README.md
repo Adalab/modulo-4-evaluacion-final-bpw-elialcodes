@@ -9,10 +9,7 @@ Configuración de tu editor de código en la terminal:
 
 - npm init => para iniciar el proyecto, se debe seguir sus indicaciones de configuración
 - npm install => para instalar la carpeta node_modules, donde se guardarán los módulo siguientes a importar
-- npm install express => para instaler Express JS, nuestro servidor
-- npm install cors => para permitir peticiones a un recurso alojado en otro origen
 - npm start => para arrancar el servidor
-- npm install mysql2 => para poder conectar el servidor a la base de datos de MySQL
 
 Se han diseñado y creado endpoints para poder realizar las siguientes acciones CRUD (create, read, update, delete):
 
