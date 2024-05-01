@@ -8,7 +8,7 @@ Es necesario tener instalado previamente node.js, MySQL y la interfaz gráfica M
 Configuración de tu editor de código en la terminal:
 
 - npm init => para iniciar el proyecto, se debe seguir sus indicaciones de configuración
-- npm install => para instalar la carpeta node_modules, donde se guardarán los módulo siguientes a importar
+- npm install => para instalar la carpeta node_modules
 - npm start => para arrancar el servidor
 
 Se han diseñado y creado endpoints para poder realizar las siguientes acciones CRUD (create, read, update, delete):
